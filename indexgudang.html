@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Gudang Barang</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Gudang Barang</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" data-content="stok-barang"><i class="fas fa-boxes"></i> Stok Barang</a></li>
+                    <li><a href="#" data-content="barang-masuk"><i class="fas fa-arrow-alt-circle-down"></i> Barang Masuk</a></li>
+                    <li><a href="#" data-content="barang-keluar"><i class="fas fa-truck-loading"></i> Barang Keluar</a></li>
+                    <li><a href="#" data-content="restock-barang"><i class="fas fa-sync-alt"></i> Restock Barang</a></li>
+                    <li><a href="#" data-content="barang-sedang-dikirim"><i class="fas fa-shipping-fast"></i> Barang Sedang Dikirim</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>TOKO SEMBAKO JAYA ABADI</h1>
+            </header>
+
+            <section id="stok-barang" class="content-section active">
+                <h2>Stok Barang</h2>
+                <p>Ini adalah halaman untuk melihat daftar stok barang yang tersedia saat ini di gudang Anda.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Barang</th>
+                            <th>Kode Barang</th>
+                            <th>Jumlah</th>
+                            <th>Lokasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stok-barang-table-body">
+                        </tbody>
+                </table>
+            </section>
+
+            <section id="barang-masuk" class="content-section">
+                <h2>Barang Masuk</h2>
+                <p>Catat barang yang masuk ke gudang. Jika kode barang belum ada di sistem, ini akan dicatat sebagai barang baru. Jika sudah ada, ini akan menambah stok yang tersedia.</p>
+                <form id="form-barang-masuk">
+                    <label for="nama-barang-masuk">Nama Barang:</label>
+                    <input type="text" id="nama-barang-masuk" name="nama-barang-masuk" required><br><br>
+
+                    <label for="kode-barang-masuk">Kode Barang:</label>
+                    <input type="text" id="kode-barang-masuk" name="kode-barang-masuk" required><br><br>
+
+                    <label for="jumlah-masuk">Jumlah Masuk:</label>
+                    <input type="number" id="jumlah-masuk" name="jumlah-masuk" min="1" required><br><br>
+
+                    <label for="supplier">Supplier (Opsional):</label>
+                    <input type="text" id="supplier" name="supplier"><br><br>
+
+                    <label for="lokasi-penyimpanan-masuk">Lokasi Penyimpanan (Opsional, untuk barang baru):</label>
+                    <input type="text" id="lokasi-penyimpanan-masuk" name="lokasi-penyimpanan-masuk"><br><br>
+
+                    <label for="tanggal-masuk">Tanggal Masuk:</label>
+                    <input type="date" id="tanggal-masuk" name="tanggal-masuk" required><br><br>
+
+                    <button type="submit">Catat Barang Masuk</button>
+                </form>
+
+                <h3 style="margin-top: 40px; margin-bottom: 20px; color: #2c3e50;">Riwayat Barang Masuk</h3>
+                <table id="table-riwayat-barang-masuk">
+                    <thead>
+                        <tr>
+                            <th>Tanggal Masuk</th>
+                            <th>Nama Barang</th>
+                            <th>Kode Barang</th>
+                            <th>Jumlah</th>
+                            <th>Supplier</th>
+                            <th>Lokasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="barang-masuk-table-body">
+                        </tbody>
+                </table>
+            </section>
+
+            <section id="barang-keluar" class="content-section">
+                <h2>Barang Keluar</h2>
+                <p>Catat dan lihat riwayat barang yang sudah keluar dari gudang.</p>
+                <form id="form-barang-keluar">
+                    <label for="nama-barang-keluar">Nama Barang:</label>
+                    <input type="text" id="nama-barang-keluar" name="nama-barang-keluar" required><br><br>
+
+                    <label for="kode-barang-keluar">Kode Barang:</label>
+                    <input type="text" id="kode-barang-keluar" name="kode-barang-keluar" required><br><br>
+
+                    <label for="jumlah-keluar">Jumlah Keluar:</label>
+                    <input type="number" id="jumlah-keluar" name="jumlah-keluar" min="1" required><br><br>
+
+                    <label for="penerima">Penerima:</label>
+                    <input type="text" id="penerima" name="penerima"><br><br>
+
+                    <label for="tanggal-keluar">Tanggal Keluar:</label>
+                    <input type="date" id="tanggal-keluar" name="tanggal-keluar" required><br><br>
+
+                    <label for="tanggal-tiba-keluar">Tanggal Tiba (Perkiraan):</label>
+                    <input type="date" id="tanggal-tiba-keluar" name="tanggal-tiba-keluar"><br><br>
+
+                    <button type="submit">Catat Barang Keluar</button>
+                </form>
+
+                <h3 style="margin-top: 40px; margin-bottom: 20px; color: #2c3e50;">Riwayat Barang Keluar</h3>
+                <table id="table-riwayat-barang-keluar">
+                    <thead>
+                        <tr>
+                            <th>Tanggal Keluar</th>
+                            <th>Nama Barang</th>
+                            <th>Kode Barang</th>
+                            <th>Jumlah</th>
+                            <th>Penerima</th>
+                        </tr>
+                    </thead>
+                    <tbody id="barang-keluar-table-body">
+                        </tbody>
+                </table>
+            </section>
+
+            <section id="restock-barang" class="content-section">
+                <h2>Restock Barang</h2>
+                <p>Formulir untuk mencatat penambahan stok barang yang sudah ada di gudang.</p>
+                <form id="form-restock-barang">
+                    <label for="nama-barang-restock">Nama Barang:</label>
+                    <input type="text" id="nama-barang-restock" name="nama-barang-restock" required><br><br>
+
+                    <label for="kode-barang-restock">Kode Barang:</label>
+                    <input type="text" id="kode-barang-restock" name="kode-barang-restock" required><br><br>
+
+                    <label for="jumlah-restock">Jumlah Restock:</label>
+                    <input type="number" id="jumlah-restock" name="jumlah-restock" min="1" required><br><br>
+
+                    <label for="sumber-restock">Sumber Restock (misal: Produksi, Gudang Lain):</label>
+                    <input type="text" id="sumber-restock" name="sumber-restock"><br><br>
+
+                    <label for="lokasi-penyimpanan-restock">Lokasi Penyimpanan (Opsional, jika berubah):</label>
+                    <input type="text" id="lokasi-penyimpanan-restock" name="lokasi-penyimpanan-restock"><br><br>
+
+                    <label for="tanggal-restock">Tanggal Restock:</label>
+                    <input type="date" id="tanggal-restock" name="tanggal-restock" required><br><br>
+
+                    <button type="submit">Catat Restock</button>
+                </form>
+
+                <h3 style="margin-top: 40px; margin-bottom: 20px; color: #2c3e50;">Riwayat Restock Barang</h3>
+                <table id="table-riwayat-restock-barang">
+                    <thead>
+                        <tr>
+                            <th>Tanggal Restock</th>
+                            <th>Nama Barang</th>
+                            <th>Kode Barang</th>
+                            <th>Jumlah</th>
+                            <th>Sumber</th>
+                            <th>Lokasi Update</th>
+                        </tr>
+                    </thead>
+                    <tbody id="restock-barang-table-body">
+                        </tbody>
+                </table>
+            </section>
+
+            <section id="barang-sedang-dikirim" class="content-section">
+                <h2>Barang Sedang Dikirim</h2>
+                <p>Berikut adalah daftar barang yang sedang dalam proses pengiriman, lengkap dengan perkiraan tanggal tiba.</p>
+                <table id="table-pengiriman">
+                    <thead>
+                        <tr>
+                            <th>Tanggal Kirim</th>
+                            <th>Nama Barang</th>
+                            <th>Kode Barang</th>
+                            <th>Jumlah</th>
+                            <th>Tujuan</th>
+                            <th>Tanggal Tiba</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pengiriman-table-body">
+                        </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="script/script.js"></script>
+</body>
+</html>
